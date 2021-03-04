@@ -14,6 +14,16 @@
                 </div>
               </div></div>
             <credit-card style="margin-top:40px;"></credit-card>
+            <template v-if="!$device.mobile">
+              <div class="row justify-between" style="margin-top: 40px;">
+                <span>Debit card spend limit</span>
+                <div style="font-weight: 700;color:#22222233">
+                  <span style="color:#01D167">$345</span>&nbsp;|&nbsp;<span>$5,000</span>
+                </div>
+              </div>
+              <q-linear-progress size="18px" :value="345/5000" :class="$style.ProgressBar"></q-linear-progress>
+              <cash-back style="margin-top:40px;"></cash-back>
+            </template>
           </div>
           <div class="col-12 col-md-6"></div>
         </div>
@@ -27,12 +37,14 @@ import DesktopLayout from "@/layout/DesktopLayout";
 import MobileLayout from "@/layout/MobileLayout";
 import TopUpIcon from "@/assets/TopUpIcon";
 import CreditCard from "@/components/CreditCard";
+import CashBack from "@/components/CashBack";
 
 export default {
   name: 'LayoutDefault',
   components:{
     TopUpIcon,
-    CreditCard
+    CreditCard,
+    CashBack
   },
   computed: {
     Layout() {
@@ -119,5 +131,9 @@ h2.Title {
   font-size: 14px;
   color:#23CEFD;
   font-weight: 600;
+}
+.ProgressBar{
+  margin-top:11px;
+  border-radius: 9px;
 }
 </style>

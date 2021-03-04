@@ -6,7 +6,11 @@ import { Quasar } from 'quasar'
 import device from "vue-device-detector"
 
 Vue.use(Quasar, {
-  config: {},
+  config: {
+    brand:{
+      primary:'#01D167'
+    }
+  },
   plugins: {
   }
  })
