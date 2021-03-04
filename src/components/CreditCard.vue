@@ -44,7 +44,7 @@ export default {
   }
 }
 </script>
-<style module lang="scss">
+<style lang="scss" module>
 @import "../styles/mixins";
 
 .Container {
@@ -99,7 +99,7 @@ export default {
     > span {
       margin-right: 4px;
     }
-    +span{
+    + span {
       letter-spacing: 4px;
     }
   }

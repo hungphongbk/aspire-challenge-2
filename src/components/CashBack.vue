@@ -7,8 +7,8 @@
     <q-circular-progress
         :value="15*100/31"
         color="primary"
-        size="60px"
         show-value
+        size="60px"
     >
       <div class="text-center"><p :class="$style.Value">15</p><span>days left</span></div>
     </q-circular-progress>
@@ -19,7 +19,7 @@ export default {
   name: "CashBack"
 }
 </script>
-<style module lang="scss">
+<style lang="scss" module>
 .Container {
   border-radius: 12px;
   padding: 24px;

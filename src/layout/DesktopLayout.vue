@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh LpR fFf">
 
-    <q-drawer show-if-above v-model="left" side="left" :content-class="$style.DrawerPanel">
+    <q-drawer v-model="left" :content-class="$style.DrawerPanel" show-if-above side="left">
       <aspire-logo></aspire-logo>
       <span :class="$style.SubText">Trusted way of banking for 3,000+ SMEs and startups in Singapore</span>
       <q-list>
@@ -11,7 +11,7 @@
           </q-item-section>
           <q-item-section>Home</q-item-section>
         </q-item>
-        <q-item :class="$style.MenuItem" :active="true" :active-class="$style.Active">
+        <q-item :active="true" :active-class="$style.Active" :class="$style.MenuItem">
           <q-item-section avatar>
             <debit-card-icon></debit-card-icon>
           </q-item-section>

@@ -12,7 +12,8 @@
                   <top-up-icon style="vertical-align: middle"></top-up-icon>
                   &nbsp;Top up
                 </div>
-              </div></div>
+              </div>
+            </div>
             <credit-card style="margin-top:40px;"></credit-card>
             <template v-if="!$device.mobile">
               <div class="row justify-between" style="margin-top: 40px;">
@@ -21,11 +22,13 @@
                   <span style="color:#01D167">$345</span>&nbsp;|&nbsp;<span>$5,000</span>
                 </div>
               </div>
-              <q-linear-progress size="18px" :value="345/5000" :class="$style.ProgressBar"></q-linear-progress>
+              <q-linear-progress :class="$style.ProgressBar" :value="345/5000" size="18px"></q-linear-progress>
               <cash-back style="margin-top:40px;"></cash-back>
             </template>
           </div>
-          <div class="col-12 col-md-6"></div>
+          <div class="col-12 col-md-6">
+            <right-list></right-list>
+          </div>
         </div>
       </div>
     </div>
@@ -38,13 +41,15 @@ import MobileLayout from "@/layout/MobileLayout";
 import TopUpIcon from "@/assets/TopUpIcon";
 import CreditCard from "@/components/CreditCard";
 import CashBack from "@/components/CashBack";
+import RightList from "@/components/RightList";
 
 export default {
   name: 'LayoutDefault',
-  components:{
+  components: {
     TopUpIcon,
     CreditCard,
-    CashBack
+    CashBack,
+    RightList
   },
   computed: {
     Layout() {
@@ -59,8 +64,7 @@ export default {
 
 .Container {
   @include for-desktop-up {
-    padding-left: 60px;
-    padding-top: 60px;
+    padding: 60px;
   }
 }
 
@@ -72,68 +76,84 @@ h2.Title {
 
 
   //@include for-desktop-up {
-    font-size: 24px;
-    font-weight: 700;
+  font-size: 24px;
+  font-weight: 700;
   //}
-  @include for-phone-only{
-    color:white;
-    margin-top:32px;
+  @include for-phone-only {
+    color: white;
+    margin-top: 32px;
   }
 }
 
-.Panel{
-  margin-top:24px;
-  @include for-desktop-up{
-    border:1px solid #FCFCFC;
-    border-radius:8px;
-    box-shadow:0 3px 16px #00000014;
-    padding:40px;
-    margin-top:40px;
+.Panel {
+  margin-top: 24px;
+  @include for-desktop-up {
+    border: 1px solid #FCFCFC;
+    border-radius: 8px;
+    box-shadow: 0 3px 16px #00000014;
+    padding: 40px;
+    margin-top: 40px;
+    > :global(.row) > div {
+      &:nth-child(1) {
+        padding-right: 40px;
+      }
+
+      &:nth-child(2) {
+        padding-left: 40px;
+        padding-top: 65px;
+      }
+    }
   }
-  @include for-phone-only{
-    position:relative;
-    &:before{
-      position:absolute;
+  @include for-phone-only {
+    position: relative;
+    &:before {
+      position: absolute;
       top: 150px;
       left: -24px;
       right: -24px;
-      height:100%;
+      height: 100%;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
-      display:block;
-      content:'';
+      display: block;
+      content: '';
       background-color: white;
+    }
+    > :global(.row) > div:nth-child(2) {
+      padding-top: 15px;
     }
   }
 }
 
-.Info{
-  @include for-phone-only{
-    color:white;
+.Info {
+  @include for-phone-only {
+    color: white;
   }
 }
 
-.Badge{
-  border-radius:4px;
-  padding:3px 12px;
-  background-color:#01D167;
-  color:white;
-  font-size:13px;
-  font-weight:700;
-  &+span{
-    font-size:26px;
-    font-weight:bold;
+.Badge {
+  border-radius: 4px;
+  padding: 3px 12px;
+  background-color: #01D167;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+
+  & + span {
+    font-size: 26px;
+    font-weight: bold;
     margin-left: 12px;
     vertical-align: sub;
   }
 }
-.TopUp{
+
+.TopUp {
   font-size: 14px;
-  color:#23CEFD;
+  color: #23CEFD;
   font-weight: 600;
 }
-.ProgressBar{
-  margin-top:11px;
+
+.ProgressBar {
+  margin-top: 11px;
   border-radius: 9px;
 }
 </style>
