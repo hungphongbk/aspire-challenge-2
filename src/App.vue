@@ -5,14 +5,14 @@
       <div :class="$style.Panel">
         <div class="row">
           <div class="col-12 col-md-6">
-            <span>Available Balance</span>
-            <div class="row justify-between items-center">
-              <div><span :class="$style.Badge">S$</span><span>3,000</span></div>
-              <div :class="$style.TopUp">
-                <top-up-icon style="vertical-align: middle"></top-up-icon>
-                &nbsp;Top up
-              </div>
-            </div>
+            <div :class="$style.Info"><span>Available Balance</span>
+              <div class="row justify-between items-center">
+                <div><span :class="$style.Badge">S$</span><span>3,000</span></div>
+                <div :class="$style.TopUp">
+                  <top-up-icon style="vertical-align: middle"></top-up-icon>
+                  &nbsp;Top up
+                </div>
+              </div></div>
             <credit-card style="margin-top:40px;"></credit-card>
           </div>
           <div class="col-12 col-md-6"></div>
@@ -59,19 +59,45 @@ h2.Title {
   line-height: 1;
 
 
-  @include for-desktop-up {
+  //@include for-desktop-up {
     font-size: 24px;
     font-weight: 700;
+  //}
+  @include for-phone-only{
+    color:white;
+    margin-top:32px;
   }
 }
 
 .Panel{
+  margin-top:24px;
   @include for-desktop-up{
     border:1px solid #FCFCFC;
     border-radius:8px;
     box-shadow:0 3px 16px #00000014;
     padding:40px;
     margin-top:40px;
+  }
+  @include for-phone-only{
+    position:relative;
+    &:before{
+      position:absolute;
+      top: 150px;
+      left: -24px;
+      right: -24px;
+      height:100%;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      display:block;
+      content:'';
+      background-color: white;
+    }
+  }
+}
+
+.Info{
+  @include for-phone-only{
+    color:white;
   }
 }
 

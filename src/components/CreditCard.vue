@@ -1,6 +1,6 @@
 <template>
   <q-responsive :ratio="366/220">
-    <div  :class="$style.Container">
+    <div :class="$style.Container">
       <div :class="$style.Eye">
         <removed-eye-icon></removed-eye-icon>
       </div>
@@ -10,20 +10,23 @@
       <div :class="$style.Name">Mark Henry</div>
       <div class="row items-center">
         <div
-            v-for="item in 4"
+            v-for="item in $device.mobile?3:4"
             :key="item"
             :class="$style.Dots">
           <span
               v-for="item in 4"
-              :key="item" />
+              :key="item"/>
         </div>
-        <span style="font-weight: 600;letter-spacing: 6px;">2020</span>
+        <span>2020</span>
       </div>
       <div :class="$style.Cvv">
         <span>Thru: 12/20</span>
-        <span style="margin-left: 32px">CVV: <span style="font-size: 24px;line-height: 0;vertical-align: middle">* * *</span></span>
+        <span style="margin-left: 32px">CVV: <span
+            style="font-size: 24px;line-height: 0;vertical-align: middle">* * *</span></span>
       </div>
-      <div :class="$style.VisaLogo"><visa-logo></visa-logo></div>
+      <div :class="$style.VisaLogo">
+        <visa-logo></visa-logo>
+      </div>
     </div>
   </q-responsive>
 </template>
@@ -42,13 +45,15 @@ export default {
 }
 </script>
 <style module lang="scss">
+@import "../styles/mixins";
+
 .Container {
   background-color: #01D167;
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 2px 6px #00000014;
   position: relative;
-  color:white;
+  color: white;
 }
 
 .Eye {
@@ -63,16 +68,19 @@ export default {
   box-shadow: 0 2px 6px #072a441f;
   cursor: pointer;
 }
-.Name{
-  font-size:22px;
-  font-weight:600;
-  margin-top:24px;
-  margin-bottom:24px;
+
+.Name {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
-.Dots{
-  composes:row justify-between items-center from global;
+
+.Dots {
+  composes: row justify-between items-center from global;
   margin-right: 18px;
-  >span{
+
+  > span {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -80,16 +88,33 @@ export default {
     background-color: white;
     margin-right: 6px;
   }
+
+  + span {
+    font-weight: 600;
+    letter-spacing: 6px;
+  }
+
+  @include for-phone-only {
+    margin-right: 12px;
+    > span {
+      margin-right: 4px;
+    }
+    +span{
+      letter-spacing: 4px;
+    }
+  }
 }
-.Cvv{
-  margin-top:15px;
-font-size:13px;
-  font-weight:600;
+
+.Cvv {
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 1.56px;
 }
-.VisaLogo{
+
+.VisaLogo {
   position: absolute;
-  bottom:24px;
-  right:24px;
+  bottom: 24px;
+  right: 24px;
 }
 </style>
